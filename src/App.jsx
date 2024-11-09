@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom'
 const App = () => {
   return (
     <div className='min-w-[100%]'>
-      <Navbar/> 
+      {/* <Navbar/>  */}
       <Pages>
         <Outlet/>
       </Pages>

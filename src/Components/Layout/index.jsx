@@ -3,7 +3,7 @@ import React from 'react'
 
 const index = ({children}) => {
   return (
-    <motion.div variants={{
+    <div variants={{
       hidden:{opacity:0},
       show:{
         opacity:1,
@@ -12,10 +12,10 @@ const index = ({children}) => {
         }
       }
     }}>
-    <div className=' flex flex-col  min-h-[100vh] pt-20 bg-gradient-to-r from-zinc-900 via-amber-950 to-zinc-900  w-[100%]'>
+    <div className=' flex flex-col  min-h-[100vh] pt-5 bg-gradient-to-r from-zinc-900 via-amber-950 to-zinc-900  w-[100%]'>
         {children}
     </div>
-    </motion.div>
+    </div>
   )
 }
 

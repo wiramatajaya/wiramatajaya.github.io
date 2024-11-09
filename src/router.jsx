@@ -1,12 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import ErrorPage from "./pages/Error";
 import Loading from "./pages/Loading";
 import React,{ Suspense, lazy } from "react";
-import {About,Home} from "./pages/";
-import Coffee from "./pages/Coffee.jsx";
-import Foods from "./pages/Foods.jsx";
+import {Home} from "./pages/";
 import Menu from "./pages/Menu.jsx";
-import Ice from "./pages/Ice.jsx";
+import Cart from "./pages/Cart.jsx";
 const LazyApp = lazy(()=>import(
     './App.jsx'
     ))
@@ -15,7 +12,9 @@ const LazyApp = lazy(()=>import(
 export const Router = createBrowserRouter([
     {path: '/',
         element:<Home/>
-        ,
+    },    
+    {path: '/cart',
+        element:<Cart/>
     },
     {path: '/menu',
         element:(
@@ -24,20 +23,10 @@ export const Router = createBrowserRouter([
         </Suspense>
         ),
         children:[
-            {
-                path:'/menu',
-                element:<Menu/>
-            },
-            { path:'/menu/ICE',
-                element:<Ice/>
-            },           
-            { path:'/menu/COFFEE',
-                element:<Coffee/>
-            },            
-            { path:'/menu/FOODS',
-                element:<Foods/>
-            },            
+          
+            {path:'/menu',
+                element: <Menu/>
+            }           
         ],
     },
 ])
-// const listMenu = ['COFFEE','ICE','FOODS']
