@@ -64,7 +64,7 @@ const {AddToCart} = useContext(CartContext)
                       <div className=" flex items-center  justify-between  absolute bottom-3 ">
                           <div className='flex items-center rounded-2xl border-[1px] border-amber-900'>
                               <button  onClick={()=>{
-                                const data = {name : e.name , id : new Date(), price : e.price}
+                                const data = {name : e.name , id : new Date(), price : e.price,quantity:1, total: parseFloat(e.price) }
                                 AddToCart(data)}} >
                             <Icon icon="ic:baseline-plus" className="size-9 p-[1px] active:scale-95 bg-amber-900 rounded-xl" />
                           </button>

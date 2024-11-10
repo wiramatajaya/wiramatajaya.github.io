@@ -16,15 +16,28 @@ export const CartContext = createContext()
     useEffect(() => {
         localStorage.setItem('MyCart', JSON.stringify(cart));
     }, [cart]);
-    const AddToCart =(item)=>{
-            setCart((prevCart) => [...prevCart, item])
-    }
+    const AddToCart = (item) => {
+        setCart((prevCart) => {
+            const existingItem = prevCart.find((cartItem) => cartItem.name === item.name);
+            if (existingItem) {
+                // Jika item sudah ada, perbarui jumlahnya
+                return prevCart.map((cartItem) =>
+                    cartItem.name === item.name
+                        ? { ...cartItem, quantity: cartItem.quantity + 1,total:parseFloat(cartItem.total) + parseFloat(cartItem.price) }
+                        : cartItem
+                );
+            }
+            // Jika item baru, tambahkan ke cart
+            return [...prevCart, { ...item, quantity: 1 }];
+        });
+    };
+
     const removeItem = (id) => {
         setCart(prevItems => prevItems.filter(item => item.id !== id));
     };
 
     const totalPrice=()=>{
-        const total =cart.map(e=>parseFloat(e.price))
+        const total =cart.map(e=>parseFloat(e.total))
         if (cart.length == 0) return 0
         const totalPrice = total.reduce((a,b)=>{
             return a+b
